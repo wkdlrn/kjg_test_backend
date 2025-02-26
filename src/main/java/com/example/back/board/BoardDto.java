@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,9 +64,9 @@ public class BoardDto {
                     .title(board.getTitle())
                     .content(board.getContent())
                     .writer(board.getWriter())
-                    .comments(board.getComments().stream()
-                            .map(CommentResp::fromEntity)
-                            .collect(Collectors.toList()))
+                    .comments(board.getComments() != null
+                            ? board.getComments().stream().map(CommentResp::fromEntity).collect(Collectors.toList())
+                            : new ArrayList<>())
                     .build();
         }
     }
