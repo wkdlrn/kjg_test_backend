@@ -1,6 +1,7 @@
 package com.example.back.board;
 
 import com.example.back.comment.Comment;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,8 +18,11 @@ public class BoardDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class RegisterReq {
+        @Schema(description = "게시글 제목")
         private String title;
+        @Schema(description = "게시글 내용")
         private String content;
+        @Schema(description = "작성자")
         private String writer;
 
         public Board toEntity() {
@@ -34,7 +38,9 @@ public class BoardDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class CommentRegister {
+        @Schema(description = "댓글 작성자")
         private String writer;
+        @Schema(description = "댓글 내용")
         private String content;
 
         public Comment toEntity(Board board) {
