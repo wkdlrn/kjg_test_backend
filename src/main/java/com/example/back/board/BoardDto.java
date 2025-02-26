@@ -40,9 +40,11 @@ public class BoardDto {
             return Comment.builder()
                     .writer(writer)
                     .content(content)
+                    .board(board)
                     .build();
         }
     }
+
 
     @Getter
     @Builder
