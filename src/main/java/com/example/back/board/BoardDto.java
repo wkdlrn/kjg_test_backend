@@ -85,4 +85,27 @@ public class BoardDto {
                     .build();
         }
     }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ListResp {
+        private Long idx;
+        private String title;
+        private String content;
+        private String writer;
+        private int commentCount;
+
+        public static ListResp fromEntity(Board board) {
+            return ListResp.builder()
+                    .idx(board.getIdx())
+                    .title(board.getTitle())
+                    .content(board.getContent())
+                    .writer(board.getWriter())
+                    .commentCount(board.getComments().size())
+                    .build();
+        }
+    }
+
 }

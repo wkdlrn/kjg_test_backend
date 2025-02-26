@@ -21,8 +21,8 @@ public class BoardService {
         return BoardDto.RegisterResp.fromEntity(boardRepository.findById(idx).orElseThrow());
     }
 
-    public List<BoardDto.RegisterResp> readAll() {
+    public List<BoardDto.ListResp> readAll() {
         return boardRepository.findAll().stream()
-                .map(BoardDto.RegisterResp::fromEntity).collect(Collectors.toList());
+                .map(BoardDto.ListResp::fromEntity).collect(Collectors.toList());
     }
 }
