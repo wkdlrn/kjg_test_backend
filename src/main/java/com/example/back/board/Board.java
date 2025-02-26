@@ -23,4 +23,7 @@ public class Board {
     private String content;
     private String writer;
 
+    @OneToMany(mappedBy = "board")
+    private List<Comment> comments = new ArrayList<>();
+
 }

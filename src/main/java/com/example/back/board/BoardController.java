@@ -23,7 +23,15 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<BoardDto.RegisterResp>> list() {
+    public ResponseEntity<List<BoardDto.ListResp>> list() {
         return ResponseEntity.ok(boardService.readAll());
     }
+
+    @PostMapping("/{idx}/comment")
+    public ResponseEntity<String> commentRegister(@PathVariable Long idx, @RequestBody BoardDto.CommentRegister request) {
+        boardService.commentRegister(idx, request);
+        return ResponseEntity.ok(new String("댓글이 등록되었습니다."));
+    }
+
+
 }
